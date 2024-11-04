@@ -17,7 +17,9 @@ export const Route = createFileRoute('/')({
     return getTwitchUser(auth.twitch.clientID, accessToken, { signal });
   },
   component: () => {
-    const user = Route.useLoaderData();
+    const { useLoaderData } = Route;
+    /* eslint-disable-next-line */
+    const user = useLoaderData();
 
     console.log({ user });
 

@@ -29,9 +29,10 @@ export const Route = createFileRoute('/_auth/login/callback')({
     const { code, state } = search;
     const storedState = getCookie('state');
 
-    if (code === null || storedState === null || state !== storedState) {
+    if (storedState === undefined || state !== storedState) {
       console.error('invalid code or state - 400 bad request');
-      throw redirect({
+      redirect({
+        throw: true,
         from: '/login/callback',
         to: '/',
         statusCode: 400,
@@ -67,7 +68,8 @@ export const Route = createFileRoute('/_auth/login/callback')({
         maxAge: 31536e3,
       });
 
-      throw redirect({
+      redirect({
+        throw: true,
         from: '/login/callback',
         to: '/',
       });

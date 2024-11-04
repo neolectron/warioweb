@@ -5,7 +5,8 @@ export const Route = createFileRoute('/_auth/logout')({
   beforeLoad: () => {
     deleteCookie('accessToken');
     deleteCookie('refreshToken');
-    throw redirect({
+    redirect({
+      throw: true,
       from: '/logout',
       to: '/',
     });

@@ -4,7 +4,7 @@ import { setCookie } from 'vinxi/http';
 import { env } from '../../config/env.config';
 
 export const Route = createFileRoute('/_auth/login/twitch')({
-  beforeLoad: async ({ context, location }) => {
+  beforeLoad: ({ context }) => {
     const state = generateState();
     const { client } = context.auth.twitch;
     const url = client.createAuthorizationURL(state, [
@@ -18,7 +18,8 @@ export const Route = createFileRoute('/_auth/login/twitch')({
       httpOnly: true,
       maxAge: 60 * 10, // 10 min
     });
-    throw redirect({
+    redirect({
+      throw: true,
       href: url.toString(),
       from: '/login/twitch',
     });

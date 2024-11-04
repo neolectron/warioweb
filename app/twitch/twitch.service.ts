@@ -34,6 +34,6 @@ export const getTwitchUser = async (
       'Client-Id': clientId,
     },
   });
-  const json = await response.json();
-  return json.data[0] as TwitchUser;
+  const json = (await response.json()) as { data: TwitchUser[] };
+  return json.data[0];
 };
