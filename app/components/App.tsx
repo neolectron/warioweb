@@ -9,28 +9,30 @@ export const App = ({ children }: PropsWithChildren<object>) => (
       <Meta />
     </Head>
     <Body>
-      <nav>
-        <Link
-          to="/"
-          activeProps={{
-            style: { fontWeight: 'bold' },
-          }}
-          activeOptions={{ exact: true }}
-        >
-          Home
-        </Link>
-        <br />
-        <Link
-          to="/about"
-          activeProps={{
-            style: { fontWeight: 'bold' },
-          }}
-        >
-          About
-        </Link>
-      </nav>
-      <hr />
-      {children}
+      <div id="root">
+        <nav>
+          <Link
+            to="/"
+            activeProps={{
+              style: { fontWeight: 'bold' },
+            }}
+            activeOptions={{ exact: true }}
+          >
+            Home
+          </Link>
+          <br />
+          <Link
+            to="/about"
+            activeProps={{
+              style: { fontWeight: 'bold' },
+            }}
+          >
+            About
+          </Link>
+        </nav>
+        <hr />
+        {children}
+      </div>
       <ScrollRestoration />
       <TanStackRouterDevtools position="bottom-right" />
       <Scripts />

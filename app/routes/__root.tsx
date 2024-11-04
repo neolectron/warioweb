@@ -5,6 +5,8 @@ import { App } from '../components/App';
 import { env } from '../config/env.config';
 import { getAuthTwitch } from '../twitch/twitch.service';
 import logger from '../logger/logger';
+import { StrictMode } from 'react';
+import { ChakraProvider } from '../components/ChakraProvider';
 
 const twitchClient = getAuthTwitch();
 
@@ -35,9 +37,13 @@ export const Route = createRootRouteWithContext<RouterContext>()({
     </App>
   ),
   component: () => (
-    <App>
-      <Outlet />
-    </App>
+    <StrictMode>
+      <ChakraProvider>
+        <App>
+          <Outlet />
+        </App>
+      </ChakraProvider>
+    </StrictMode>
   ),
   meta: () => [
     { title: 'Warioweb', charSet: 'utf-8' },

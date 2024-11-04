@@ -1,6 +1,7 @@
 import { getCookie } from 'vinxi/http';
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { getTwitchUser } from '../twitch/twitch.service';
+import { Button } from '../components/ui/Button';
 
 export const Route = createFileRoute('/')({
   beforeLoad: () => {
@@ -27,9 +28,11 @@ export const Route = createFileRoute('/')({
       return (
         <div>
           <h1>Home page!</h1>
-          <Link from="/" to="/login/twitch">
-            Login
-          </Link>
+          <Button asChild>
+            <Link from="/" to="/login/twitch">
+              Login
+            </Link>
+          </Button>
         </div>
       );
     }
@@ -38,9 +41,11 @@ export const Route = createFileRoute('/')({
         <h1>Welcome back {user.display_name}!</h1>
         <img src={user.profile_image_url} alt={user.display_name} />
         <pre>{JSON.stringify(user, null, 2)}</pre>
-        <Link from="/" to="/logout">
-          Logout
-        </Link>
+        <Button asChild>
+          <Link from="/" to="/logout">
+            Logout
+          </Link>
+        </Button>
       </div>
     );
   },
