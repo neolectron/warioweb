@@ -18,9 +18,8 @@ export const Route = createFileRoute('/')({
     return getTwitchUser(auth.twitch.clientID, accessToken, { signal });
   },
   component: () => {
-    const { useLoaderData } = Route;
-    /* eslint-disable-next-line */
-    const user = useLoaderData();
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const user = Route.useLoaderData();
 
     console.log({ user });
 
